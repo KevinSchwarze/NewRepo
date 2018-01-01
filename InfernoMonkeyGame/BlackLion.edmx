@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BlackLionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="character">
+          <Key>
+            <PropertyRef Name="characterID" />
+          </Key>
+          <Property Name="characterID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="strength" Type="int" />
+          <Property Name="health" Type="int" />
+          <Property Name="wins" Type="int" />
+          <Property Name="losses" Type="int" />
+          <Property Name="quote" Type="varchar" MaxLength="50" />
+          <Property Name="weapon" Type="int" />
+        </EntityType>
+        <EntityType Name="images">
+          <Key>
+            <PropertyRef Name="imageId" />
+          </Key>
+          <Property Name="imageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loginId" Type="int" Nullable="false" />
+          <Property Name="image" Type="image" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="loginId" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="loginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BlackLionModelStoreContainer">
+          <EntitySet Name="character" EntityType="Self.character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="images" EntityType="Self.images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlackLionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BlackLionEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="images" EntityType="BlackLionModel.image" />
+          <EntitySet Name="characters" EntityType="BlackLionModel.character" />
+          <EntitySet Name="logins" EntityType="BlackLionModel.login" />
+        </EntityContainer>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="imageId" />
+          </Key>
+          <Property Name="imageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loginId" Type="Int32" Nullable="false" />
+          <Property Name="image1" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="character">
+          <Key>
+            <PropertyRef Name="characterID" />
+          </Key>
+          <Property Name="characterID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="strength" Type="Int32" />
+          <Property Name="health" Type="Int32" />
+          <Property Name="wins" Type="Int32" />
+          <Property Name="losses" Type="Int32" />
+          <Property Name="quote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="weapon" Type="Int32" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="loginId" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="loginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlackLionModelStoreContainer" CdmEntityContainer="BlackLionEntities" >
+          <EntitySetMapping Name="images">
+            <EntityTypeMapping TypeName="BlackLionModel.image">
+              <MappingFragment StoreEntitySet="images">
+                <ScalarProperty Name="image1" ColumnName="image" />
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+                <ScalarProperty Name="imageId" ColumnName="imageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="characters">
+            <EntityTypeMapping TypeName="BlackLionModel.character">
+              <MappingFragment StoreEntitySet="character">
+                <ScalarProperty Name="weapon" ColumnName="weapon" />
+                <ScalarProperty Name="quote" ColumnName="quote" />
+                <ScalarProperty Name="losses" ColumnName="losses" />
+                <ScalarProperty Name="wins" ColumnName="wins" />
+                <ScalarProperty Name="health" ColumnName="health" />
+                <ScalarProperty Name="strength" ColumnName="strength" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="characterID" ColumnName="characterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="BlackLionModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
