@@ -1,0 +1,16 @@
+{
+
+"teams"
+[
+{
+"name":"cubs",
+"city":"Chicago",
+"stadium":"Wrigley Field"
+}
+{
+"name":"cardinals",
+"city":"St. Louis",
+"stadium":"Busch Stadium"
+}
+]
+}
