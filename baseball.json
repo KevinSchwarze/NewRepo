@@ -1,7 +1,6 @@
 
+{
 
-"teams":
-[
 {
 "name":"cubs",
 "city":"Chicago",
@@ -12,5 +11,5 @@
 "city":"St. Louis",
 "stadium":"Busch Stadium"
 }
-]
+}
 
